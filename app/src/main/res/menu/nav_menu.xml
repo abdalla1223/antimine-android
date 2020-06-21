@@ -43,11 +43,13 @@
         <item
             android:id="@+id/previous_games"
             android:checkable="false"
+            android:icon="@drawable/calendar"
             android:title="@string/previous_games" />
 
         <item
             android:id="@+id/stats"
             android:checkable="false"
+            android:icon="@drawable/stats"
             android:title="@string/events" />
 
     </group>
@@ -82,25 +84,28 @@
             android:id="@+id/share_now"
             android:checkable="false"
             android:visible="false"
+            android:icon="@drawable/share"
             android:title="@string/share_menu"
             tools:visible="true" />
 
         <item
             android:id="@+id/rate"
+            android:icon="@drawable/hearth"
             android:checkable="false"
-            android:title="@string/rating_menu" />
-
+            android:title="@string/rating" />
     </group>
 
     <group>
 
         <item
             android:id="@+id/settings"
+            android:icon="@drawable/settings"
             android:checkable="false"
             android:title="@string/settings" />
 
         <item
             android:id="@+id/about"
+            android:icon="@drawable/info"
             android:checkable="false"
             android:title="@string/about" />
     </group>

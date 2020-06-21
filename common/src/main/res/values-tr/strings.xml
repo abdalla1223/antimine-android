@@ -93,7 +93,6 @@
     <string name="settings_large_areas_desc">Dokunma alanını artırır</string>
     <string name="settings_double_click">Çift Tıklama</string>
     <string name="rating">Geri bildirim</string>
-    <string name="rating_menu">Geri bildirim ❤</string>
     <string name="rating_message">Bu oyunu beğendiyseniz, lütfen bize bir geri bildirim verin. Bize çok yardımcı olacak.</string>
     <string name="rating_button">Evet ❤️️️</string>
     <string name="rating_button_no">Hayır</string>
