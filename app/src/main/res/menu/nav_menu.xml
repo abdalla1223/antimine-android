@@ -33,12 +33,10 @@
                 android:id="@+id/custom"
                 android:icon="@drawable/unchecked"
                 android:title="@string/custom" />
-
         </menu>
     </item>
 
-    <group
-        android:id="@+id/history_group">
+    <group android:id="@+id/history_group">
 
         <item
             android:id="@+id/previous_games"
@@ -54,14 +52,13 @@
 
     </group>
 
-    <group
-        android:id="@+id/theme_group">
+    <group android:id="@+id/theme_group">
 
         <item
             android:id="@+id/themes"
             android:checkable="false"
             android:icon="@drawable/themes"
-            android:title="@string/install" />
+            android:title="@string/themes" />
     </group>
 
     <group
@@ -77,36 +74,34 @@
 
     </group>
 
-    <group
-        android:id="@+id/social_group">
+    <group android:id="@+id/social_group">
 
         <item
             android:id="@+id/share_now"
             android:checkable="false"
-            android:visible="false"
             android:icon="@drawable/share"
             android:title="@string/share_menu"
+            android:visible="false"
             tools:visible="true" />
 
         <item
             android:id="@+id/rate"
-            android:icon="@drawable/hearth"
             android:checkable="false"
+            android:icon="@drawable/hearth"
             android:title="@string/rating" />
     </group>
 
     <group>
-
         <item
             android:id="@+id/settings"
-            android:icon="@drawable/settings"
             android:checkable="false"
+            android:icon="@drawable/settings"
             android:title="@string/settings" />
 
         <item
             android:id="@+id/about"
-            android:icon="@drawable/info"
             android:checkable="false"
+            android:icon="@drawable/info"
             android:title="@string/about" />
     </group>
 
