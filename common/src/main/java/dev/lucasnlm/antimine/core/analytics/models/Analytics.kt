@@ -86,6 +86,8 @@ sealed class Analytics(
 
     class OpenAbout : Analytics("Open About")
 
+    object OpenThemes : Analytics("Open Themes")
+
     class OpenStats : Analytics("Open Stats")
 
     class OpenSettings : Analytics("Open Settings")
