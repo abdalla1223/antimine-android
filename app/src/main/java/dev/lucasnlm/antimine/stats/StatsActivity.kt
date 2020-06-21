@@ -1,9 +1,9 @@
 package dev.lucasnlm.antimine.stats
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import dagger.hilt.android.AndroidEntryPoint
 import dev.lucasnlm.antimine.R
 import dev.lucasnlm.antimine.common.level.repository.IStatsRepository
@@ -18,14 +18,13 @@ class StatsActivity : AppCompatActivity() {
     @Inject
     lateinit var statsRepository: IStatsRepository
 
-    private lateinit var viewModel: StatsViewModel
+    private val viewModel: StatsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stats)
         setTitle(R.string.events)
 
-        viewModel = ViewModelProviders.of(this).get(StatsViewModel::class.java)
         viewModel.statsObserver.observe(
             this,
             Observer {
@@ -45,9 +44,11 @@ class StatsActivity : AppCompatActivity() {
         }
     }
 
-    private fun formatPercentage(value: Double) =
-        String.format("%.2f%%", value)
+    companion object {
+        private fun formatPercentage(value: Double) =
+            String.format("%.2f%%", value)
 
-    private fun formatTime(durationSecs: Long) =
-        String.format("%02d:%02d:%02d", durationSecs / 3600, durationSecs % 3600 / 60, durationSecs % 60)
+        private fun formatTime(durationSecs: Long) =
+            String.format("%02d:%02d:%02d", durationSecs / 3600, durationSecs % 3600 / 60, durationSecs % 60)
+    }
 }

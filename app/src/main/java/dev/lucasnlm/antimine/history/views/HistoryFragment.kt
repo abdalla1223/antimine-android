@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,16 +23,16 @@ class HistoryFragment : Fragment() {
     @Inject
     lateinit var savesRepository: ISavesRepository
 
-    private var historyViewModel: HistoryViewModel? = null
+    private lateinit var historyViewModel: HistoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.run {
-            historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel::class.java)
+        activity?.let {
+            historyViewModel = it.viewModels<HistoryViewModel>().value
         }
 
         GlobalScope.launch {
-            historyViewModel?.loadAllSaves(savesRepository)
+            historyViewModel.loadAllSaves(savesRepository)
         }
     }
 
@@ -47,17 +47,15 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         saveHistory.apply {
-            addItemDecoration(
-                DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL)
-            )
+            addItemDecoration(DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL))
             layoutManager = LinearLayoutManager(view.context)
-
-            historyViewModel?.saves?.observe(
-                viewLifecycleOwner,
-                Observer {
-                    adapter = HistoryAdapter(it)
-                }
-            )
         }
+
+        historyViewModel.saves.observe(
+            viewLifecycleOwner,
+            Observer {
+                saveHistory.adapter = HistoryAdapter(it)
+            }
+        )
     }
 }
