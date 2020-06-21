@@ -1,14 +1,11 @@
 package dev.lucasnlm.antimine.common.level.view
 
 import android.content.Context
-import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import dev.lucasnlm.antimine.common.level.repository.IDimensionRepository
@@ -16,21 +13,13 @@ import dev.lucasnlm.antimine.common.level.viewmodel.GameViewModel
 import dev.lucasnlm.antimine.common.level.widget.FixedGridLayoutManager
 import javax.inject.Inject
 
-abstract class CommonLevelFragment : Fragment() {
+abstract class CommonLevelFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
     @Inject
     lateinit var dimensionRepository: IDimensionRepository
 
     protected lateinit var viewModel: GameViewModel
     protected lateinit var recyclerGrid: RecyclerView
     protected lateinit var areaAdapter: AreaAdapter
-
-    abstract val levelFragmentResId: Int
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(levelFragmentResId, container, false)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
